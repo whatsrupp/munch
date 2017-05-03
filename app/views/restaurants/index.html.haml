@@ -7,6 +7,7 @@
       = link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant)
       - if restaurant.reviews.any?
         = restaurant.reviews.first.thoughts
+      = link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete
 - else
   No restaurants yet!
 
