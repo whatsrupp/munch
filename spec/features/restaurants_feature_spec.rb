@@ -43,7 +43,7 @@ feature 'restaurants' do
     end
   end
 
-  context 'editing restuarants' do
+  context 'editing restaurants' do
     before {Restaurant.create name: 'KFC', description: 'Tasty but sick', id: 1 }
     scenario 'let user edit restaurant' do
       visit '/restaurants'
@@ -57,5 +57,4 @@ feature 'restaurants' do
       expect(current_path).to eq('/restaurants/1')
     end
   end
-
 end
