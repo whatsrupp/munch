@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 group :test do
   gem 'rspec-rails'
+  gem 'devise'
   gem 'pry'
   gem 'capybara'
   gem 'rspec-collection_matchers'
