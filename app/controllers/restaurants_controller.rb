@@ -16,6 +16,16 @@ class RestaurantsController < ApplicationController
     redirect_to '/restaurants'
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def update 
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.update(restaurant_params)
+
+    redirect_to '/restaurants'
+  end
 
 
   def restaurant_params
