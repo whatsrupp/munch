@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
 
 git_source(:github) do |repo_name|
