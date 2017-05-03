@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem "devise", git: 'https://github.com/plataformatec/devise.git'
 gem "dotenv-rails", groups: [:development, :test]
+gem "omniauth-facebook"
 
 group :test do
   gem 'capybara'
