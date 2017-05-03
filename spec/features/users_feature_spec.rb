@@ -33,4 +33,12 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+  context "User attempts to list restaurant without logging in" do
+    it "should throw error when attempting to list restaurant" do
+      visit ('/restaurants')
+      click_link 'Add a restaurant'
+      fill_in('Name', with: 'Roast and toast')
+      expect 
+    end
+  end
 end
