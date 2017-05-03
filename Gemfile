@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
+gem "devise", git: 'https://github.com/plataformatec/devise.git'
+
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'rspec-collection_matchers'
+  gem 'rspec-rails'
 end
 
 git_source(:github) do |repo_name|
