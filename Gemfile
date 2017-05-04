@@ -3,11 +3,15 @@ source 'https://rubygems.org'
 gem "devise", git: 'https://github.com/plataformatec/devise.git'
 gem "dotenv-rails", groups: [:development, :test]
 gem "omniauth-facebook"
+gem "pry"
 
 group :test do
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'capybara'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
+  #gem 'shoulda'
+  gem 'shoulda-context'
 end
 
 git_source(:github) do |repo_name|

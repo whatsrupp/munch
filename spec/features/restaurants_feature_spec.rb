@@ -11,11 +11,15 @@ feature 'restaurants' do
 
   context 'restaurants have been added' do
     before do
-      Restaurant.create(name: 'Roast and Toast')
+      sign_up
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'Roast and Toast'
+      fill_in 'Description', with: 'Delecious'
+      click_button 'Create Restaurant'
+      require 'pry'; binding.pry;
     end
 
     scenario 'display restaurants' do
-      visit '/restaurants'
       expect(page).to have_content('Roast and Toast')
       expect(page).not_to have_content('No restaurants yet')
     end

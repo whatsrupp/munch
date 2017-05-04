@@ -1,3 +1,4 @@
+# require './spec/rails_helper'
 require 'rails_helper'
 
 describe Restaurant, type: :model do
@@ -12,4 +13,5 @@ describe Restaurant, type: :model do
     expect(restaurant).to have(1).error_on(:name)
   end
 
+  it { should belong_to(:user) }
 end
