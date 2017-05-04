@@ -23,7 +23,7 @@ feature 'restaurants' do
 
   context 'creating restaurants' do
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
-      visit '/restaurants'
+      sign_up
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'Roast and Toast'
       fill_in 'Description', with: 'Delecious'
@@ -33,6 +33,7 @@ feature 'restaurants' do
     end
     context 'an invalid restaurant' do
       scenario 'does not let you submit a nane that is too short' do
+        sign_up
         visit '/restaurants'
         click_link 'Add a restaurant'
         fill_in 'Name', with: 'kf'
@@ -55,6 +56,7 @@ feature 'restaurants' do
   context 'deleting restaurants' do
     before {Restaurant.create name: 'KFC', description: 'Deep fried goodness'}
     scenario 'removes a restaurant when a user clicks a delete link' do
+      sign_up
       visit '/restaurants'
       click_link 'Delete KFC'
       expect(page).to have_content 'Restaurant deleted successfully'

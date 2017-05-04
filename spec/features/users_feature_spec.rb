@@ -16,12 +16,7 @@ feature "User can sign in and out" do
 
   context "user signed in on homepage" do
     before do
-      visit('/')
-      click_link('Sign up')
-      fill_in('Email', with: 'test@example.com')
-      fill_in('Password', with: 'testtest')
-      fill_in('Password confirmation', with: 'testtest')
-      click_button('Sign up')
+      sign_up
     end
     it "should see 'sign out' link" do
       visit('/')
@@ -34,11 +29,12 @@ feature "User can sign in and out" do
     end
   end
   context "User attempts to list restaurant without logging in" do
-    it "should throw error when attempting to list restaurant" do
+    it "should redirect to sign in page" do
       visit ('/restaurants')
       click_link 'Add a restaurant'
-      fill_in('Name', with: 'Roast and toast')
-      expect 
+      expect(current_path).to eq('/users/sign_in')
+      expect(page).to have_content('Log in')
     end
   end
+
 end
