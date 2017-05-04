@@ -6,7 +6,6 @@
       %ul
         -@restaurant.errors.full_messages.each do |message|
           %li= message
-          -require'pry'; binding.pry
 = form_for @restaurant do |f|
   = f.label :name
   = f.text_field :name
