@@ -74,22 +74,40 @@ feature 'restaurants' do
 
   context 'Displaying average rating' do
     before do
-      restaurant = Restaurant.new(name: "Moe's Tavern", description: 'Chboy')
-      restaurant.reviews.new(rating: 2)
-      restaurant.reviews.new(rating: 5)
-      restaurant.reviews.new(rating: 4)
-      restaurant.save
+      sign_up(email: 'naz@whale.com')
+      create_restaurant
+      click_link 'Sign out'
+      sign_up(email: 'hello@hello.com')
+      click_link 'Review'
+      fill_in('Thoughts', with: 'Not Bad')
+      select '5', from: 'Rating'
+      click_button('Leave Review')
+      click_link 'Sign out'
+
+      sign_up(email: 'hi@hello.com')
+      click_link 'Review'
+      fill_in('Thoughts', with: 'Not Bad')
+      select '3', from: 'Rating'
+      click_button('Leave Review')
+      click_link 'Sign out'
+
+      sign_up(email: 'yo@hello.com')
+      click_link 'Review'
+      fill_in('Thoughts', with: 'Not Bad')
+      select '3', from: 'Rating'
+      click_button('Leave Review')
+
     end
     scenario 'user can see an average review when looking at the listing on the home page' do
-      sign_up
+
       visit '/restaurants'
       expect(page).to have_content '3.7'
     end
 
     scenario 'user can see average review when looking at individual listing' do
-      sign_up
+
       visit '/restaurants'
-      click_link "MOE'S TAVERN"
+      click_link "KFC"
       expect(page).to have_content '3.7'
     end
 
