@@ -73,43 +73,52 @@ feature 'restaurants' do
   end
 
   context 'Displaying average rating' do
-    before do
-      sign_up(email: 'naz@whale.com')
-      create_restaurant
-      click_link 'Sign out'
-      sign_up(email: 'hello@hello.com')
-      click_link 'Review'
-      fill_in('Thoughts', with: 'Not Bad')
-      select '5', from: 'Rating'
-      click_button('Leave Review')
-      click_link 'Sign out'
 
-      sign_up(email: 'hi@hello.com')
-      click_link 'Review'
-      fill_in('Thoughts', with: 'Not Bad')
-      select '3', from: 'Rating'
-      click_button('Leave Review')
-      click_link 'Sign out'
+    context 'reviews left' do
+      before do
+        sign_up(email: 'naz@whale.com')
+        create_restaurant
+        click_link 'Sign out'
+        sign_up(email: 'hello@hello.com')
+        click_link 'Review'
+        fill_in('Thoughts', with: 'Not Bad')
+        select '5', from: 'Rating'
+        click_button('Leave Review')
+        click_link 'Sign out'
 
-      sign_up(email: 'yo@hello.com')
-      click_link 'Review'
-      fill_in('Thoughts', with: 'Not Bad')
-      select '3', from: 'Rating'
-      click_button('Leave Review')
+        sign_up(email: 'hi@hello.com')
+        click_link 'Review'
+        fill_in('Thoughts', with: 'Not Bad')
+        select '3', from: 'Rating'
+        click_button('Leave Review')
+        click_link 'Sign out'
 
+        sign_up(email: 'yo@hello.com')
+        click_link 'Review'
+        fill_in('Thoughts', with: 'Not Bad')
+        select '3', from: 'Rating'
+        click_button('Leave Review')
+
+      end
+      scenario 'user can see an average review when looking at the listing on the home page' do
+        visit '/restaurants'
+        expect(page).to have_content '3.7'
+      end
+
+      scenario 'user can see average review when looking at individual listing' do
+        visit '/restaurants'
+        click_link "KFC"
+        expect(page).to have_content '3.7'
+      end
     end
-    scenario 'user can see an average review when looking at the listing on the home page' do
 
-      visit '/restaurants'
-      expect(page).to have_content '3.7'
+    context 'no reviews' do
+      scenario 'before any reviews have been made, rating is zero' do
+        sign_up
+        create_restaurant
+        visit '/restaurants'
+        expect(page).to have_content '0.0'
+      end
     end
-
-    scenario 'user can see average review when looking at individual listing' do
-
-      visit '/restaurants'
-      click_link "KFC"
-      expect(page).to have_content '3.7'
-    end
-
   end
 end
