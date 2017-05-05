@@ -19,7 +19,7 @@ feature 'restaurants' do
     end
 
     scenario 'display restaurants' do
-      expect(page).to have_content('Roast and Toast')
+      expect(page).to have_content('ROAST AND TOAST')
       expect(page).not_to have_content('No restaurants yet')
     end
   end
@@ -31,7 +31,7 @@ feature 'restaurants' do
       fill_in 'Name', with: 'Roast and Toast'
       fill_in 'Description', with: 'Delecious'
       click_button 'Create Restaurant'
-      expect(page).to have_content 'Roast and Toast'
+      expect(page).to have_content 'ROAST AND TOAST'
       expect(current_path).to eq '/restaurants'
     end
     context 'an invalid restaurant' do
@@ -67,7 +67,7 @@ feature 'restaurants' do
     end
     scenario 'removes a restaurant when a user clicks a delete link' do
       visit '/restaurants'
-      click_link 'Delete KFC'
+      click_link 'Delete'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
   end
@@ -89,7 +89,7 @@ feature 'restaurants' do
     scenario 'user can see average review when looking at individual listing' do
       sign_up
       visit '/restaurants'
-      click_link "Moe's Tavern"
+      click_link "MOE'S TAVERN"
       expect(page).to have_content '3.7'
     end
 
