@@ -1,3 +1,5 @@
-%p= @restaurant.name
-%p= @restaurant.description
-%p= @restaurant.average_rating
+%img{:src => @restaurant.image}
+%div.text
+  %p= @restaurant.name
+  %p= @restaurant.description
+  %p= @restaurant.average_rating
