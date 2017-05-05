@@ -16,4 +16,12 @@ describe Restaurant, type: :model do
   end
 
   it { should belong_to(:user) }
+
+  it 'should return average of the reviews' do
+    restaurant = Restaurant.new(name: "Moe's Tavern")
+    restaurant.reviews.new(rating: 2)
+    restaurant.reviews.new(rating: 5)
+    restaurant.reviews.new(rating: 4)
+    expect(restaurant.average_rating).to eq(3.7)
+  end
 end
