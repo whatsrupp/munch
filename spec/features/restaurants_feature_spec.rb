@@ -16,7 +16,6 @@ feature 'restaurants' do
       fill_in 'Name', with: 'Roast and Toast'
       fill_in 'Description', with: 'Delecious'
       click_button 'Create Restaurant'
-      require 'pry'; binding.pry;
     end
 
     scenario 'display restaurants' do
