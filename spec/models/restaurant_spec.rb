@@ -1,15 +1,17 @@
 # require './spec/rails_helper'
 require 'rails_helper'
-
 describe Restaurant, type: :model do
+  before do
+    @user = User.create(email: 'test@test.com', password: 'testtest')
+  end
   it 'is not valid with a name of less than three charaters' do
     restaurant = Restaurant.new(name: 'kf')
     expect(restaurant).not_to be_valid
   end
 
   it "is not valid unless it has a unique name" do
-    Restaurant.create(name: "Moe's Tavern")
-    restaurant = Restaurant.new(name: "Moe's Tavern")
+    @user.restaurants.create(name: "Moe's Tavern")
+    restaurant = @user.restaurants.new(name: "Moe's Tavern")
     expect(restaurant).to have(1).error_on(:name)
   end
 
