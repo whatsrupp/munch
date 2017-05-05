@@ -5,9 +5,13 @@ class Restaurant < ApplicationRecord
 
   def average_rating
     total = 0
-    self.reviews.each do |review|
-      total += review.rating
+    unless self.reviews.empty?
+      self.reviews.each do |review|
+        total += review.rating
+      end
+      (total.to_f/self.reviews.length).round(1)
+    else
+      0.0
     end
-    (total.to_f/self.reviews.length).round(1)
   end
 end
