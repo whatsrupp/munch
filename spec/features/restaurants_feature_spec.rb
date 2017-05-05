@@ -92,6 +92,16 @@ feature 'restaurants' do
       click_link 'Delete'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
+    scenario 'user cannot delete a restaurant when not signed in' do
+      click_link 'Sign out'
+      click_link "Sign up"
+      fill_in 'Email', with: 'alex@alex.com'
+      fill_in 'Password', with: 'alexspassword'
+      fill_in 'Password confirmation', with: 'alexspassword'
+      click_button 'Sign up'
+      click_link 'Delete'
+      expect(page).to have_content 'You cannot delete this restaurant'
+    end
   end
 
   context 'Displaying average rating' do
