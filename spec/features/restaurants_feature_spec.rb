@@ -35,7 +35,7 @@ feature 'restaurants' do
       expect(current_path).to eq '/restaurants'
     end
     context 'an invalid restaurant' do
-      scenario 'does not let you submit a nane that is too short' do
+      scenario 'does not let you submit a name that is too short' do
         sign_up
         visit '/restaurants'
         click_link 'Add a restaurant'
@@ -58,6 +58,15 @@ feature 'restaurants' do
       click_link 'KFC'
       expect(page).to have_content 'KFC'
       expect(current_path).to eq "/restaurants/#{kfc.id}"
+    end
+  end
+  context 'updating restaurants' do
+    before do
+      sign_up
+      create_restaurant
+    end
+    scenario 'user can update a restaurant they have created' do
+      click_link ''
     end
   end
   context 'deleting restaurants' do

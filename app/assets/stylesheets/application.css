@@ -27,10 +27,10 @@ a {
   color: #d5d8d9;
   font-size: 18px;
 }
-#details {
+.details {
   padding: 20px;
 }
-#description {
+.description {
   color: #d5d8d9;
   font-size: 18px;
 }

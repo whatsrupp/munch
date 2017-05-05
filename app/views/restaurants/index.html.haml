@@ -1,7 +1,7 @@
 - if @restaurants.any?
   - @restaurants.each do |restaurant|
     - review = restaurant.reviews.first
-    %div#details
+    %div.details[restaurant]
       = link_to restaurant.name, restaurant_path(restaurant)
       %div#description
         = restaurant.description
