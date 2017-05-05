@@ -47,9 +47,13 @@ feature 'restaurants' do
     end
   end
   context 'viewing restaurants' do
-    let!(:kfc){ Restaurant.create(name:'KFC') }
 
+    before do
+      sign_up
+      create_restaurant
+    end
     scenario 'lets a user view a restaurant' do
+      kfc = Restaurant.first
       visit '/restaurants'
       click_link 'KFC'
       expect(page).to have_content 'KFC'
@@ -57,9 +61,11 @@ feature 'restaurants' do
     end
   end
   context 'deleting restaurants' do
-    before {Restaurant.create name: 'KFC', description: 'Deep fried goodness'}
-    scenario 'removes a restaurant when a user clicks a delete link' do
+    before do
       sign_up
+      create_restaurant
+    end
+    scenario 'removes a restaurant when a user clicks a delete link' do
       visit '/restaurants'
       click_link 'Delete KFC'
       expect(page).to have_content 'Restaurant deleted successfully'
