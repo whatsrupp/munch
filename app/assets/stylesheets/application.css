@@ -42,8 +42,9 @@ header > a {
   flex-direction: column;
   background-color: grey;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   height: 300px;
+  border-radius: 5px;
 }
 content {
   display: flex;
@@ -55,9 +56,11 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: darkslategrey;
+  background-color: black;
   padding-top: 30px;
   padding-bottom: 30px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 image{
   width: 33.3%;
