@@ -65,5 +65,27 @@ feature 'restaurants' do
       expect(page).to have_content 'Restaurant deleted successfully'
     end
   end
-end
 
+  context 'Displaying average rating' do
+    before do
+      restaurant = Restaurant.new(name: "Moe's Tavern", description: 'Chboy')
+      restaurant.reviews.new(rating: 2)
+      restaurant.reviews.new(rating: 5)
+      restaurant.reviews.new(rating: 4)
+      restaurant.save
+    end
+    scenario 'user can see an average review when looking at the listing on the home page' do
+      sign_up
+      visit '/restaurants'
+      expect(page).to have_content '3.7'
+    end
+
+    scenario 'user can see average review when looking at individual listing' do
+      sign_up
+      visit '/restaurants'
+      click_link "Moe's Tavern"
+      expect(page).to have_content '3.7'
+    end
+
+  end
+end

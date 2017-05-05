@@ -13,7 +13,7 @@ describe Restaurant, type: :model do
     expect(restaurant).to have(1).error_on(:name)
   end
 
-  it { should belong_to(:user) }
+  xit { should belong_to(:user) }
 
   it 'should return average of the reviews' do
     restaurant = Restaurant.new(name: "Moe's Tavern")
