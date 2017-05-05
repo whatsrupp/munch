@@ -6,7 +6,7 @@
         = link_to restaurant.name.upcase, restaurant_path(restaurant)
       %content
         %image
-          %img(src="http://placebear.com/450/300")
+          %img{:src => restaurant.image}
         %description
           %div#text
             = restaurant.description
